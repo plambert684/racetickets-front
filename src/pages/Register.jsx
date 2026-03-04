@@ -61,7 +61,7 @@ const Register = () => {
           </h2>
           <p className="mt-2 text-sm text-gray-500 font-medium">
             Ou{' '}
-            <Link to="/login" className="text-blue-600 font-bold hover:underline">
+            <Link to="/login" className="text-violet-600 font-bold hover:underline">
               connectez-vous à votre compte
             </Link>
           </p>
@@ -80,7 +80,7 @@ const Register = () => {
                 name="first_name"
                 type="text"
                 required
-                className="w-full border border-gray-200 p-3 focus:outline-none focus:ring-1 focus:ring-blue-500 bg-gray-50 font-medium text-sm"
+                className="w-full border border-gray-200 p-3 focus:outline-none focus:ring-1 focus:ring-violet-500 bg-gray-50 font-medium text-sm"
                 placeholder="Jean"
                 value={formData.first_name}
                 onChange={handleChange}
@@ -92,7 +92,7 @@ const Register = () => {
                 name="last_name"
                 type="text"
                 required
-                className="w-full border border-gray-200 p-3 focus:outline-none focus:ring-1 focus:ring-blue-500 bg-gray-50 font-medium text-sm"
+                className="w-full border border-gray-200 p-3 focus:outline-none focus:ring-1 focus:ring-violet-500 bg-gray-50 font-medium text-sm"
                 placeholder="Dupont"
                 value={formData.last_name}
                 onChange={handleChange}
@@ -106,7 +106,7 @@ const Register = () => {
               name="email"
               type="email"
               required
-              className="w-full border border-gray-200 p-3 focus:outline-none focus:ring-1 focus:ring-blue-500 bg-gray-50 font-medium text-sm"
+              className="w-full border border-gray-200 p-3 focus:outline-none focus:ring-1 focus:ring-violet-500 bg-gray-50 font-medium text-sm"
               placeholder="votre@email.com"
               value={formData.email}
               onChange={handleChange}
@@ -119,7 +119,7 @@ const Register = () => {
               name="password"
               type="password"
               required
-              className="w-full border border-gray-200 p-3 focus:outline-none focus:ring-1 focus:ring-blue-500 bg-gray-50 font-medium text-sm"
+              className="w-full border border-gray-200 p-3 focus:outline-none focus:ring-1 focus:ring-violet-500 bg-gray-50 font-medium text-sm"
               placeholder="••••••••"
               value={formData.password}
               onChange={handleChange}
@@ -132,7 +132,7 @@ const Register = () => {
               name="confirmPassword"
               type="password"
               required
-              className="w-full border border-gray-200 p-3 focus:outline-none focus:ring-1 focus:ring-blue-500 bg-gray-50 font-medium text-sm"
+              className="w-full border border-gray-200 p-3 focus:outline-none focus:ring-1 focus:ring-violet-500 bg-gray-50 font-medium text-sm"
               placeholder="••••••••"
               value={formData.confirmPassword}
               onChange={handleChange}

@@ -37,7 +37,7 @@ const Login = () => {
           </h2>
           <p className="mt-2 text-sm text-gray-500 font-medium">
             Ou{' '}
-            <Link to="/register" className="text-blue-600 font-bold hover:underline">
+            <Link to="/register" className="text-violet-600 font-bold hover:underline">
               créez un compte gratuitement
             </Link>
           </p>
@@ -59,7 +59,7 @@ const Login = () => {
               <input
                 type="email"
                 required
-                className="w-full border border-gray-200 p-3 focus:outline-none focus:ring-1 focus:ring-blue-500 bg-gray-50 font-medium"
+                className="w-full border border-gray-200 p-3 focus:outline-none focus:ring-1 focus:ring-violet-500 bg-gray-50 font-medium"
                 placeholder="votre@email.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -70,7 +70,7 @@ const Login = () => {
               <input
                 type="password"
                 required
-                className="w-full border border-gray-200 p-3 focus:outline-none focus:ring-1 focus:ring-blue-500 bg-gray-50 font-medium"
+                className="w-full border border-gray-200 p-3 focus:outline-none focus:ring-1 focus:ring-violet-500 bg-gray-50 font-medium"
                 placeholder="••••••••"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}

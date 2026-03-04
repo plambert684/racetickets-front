@@ -71,7 +71,7 @@ const CheckoutForm = ({ event, onBookingSuccess }) => {
       <button 
         type="submit" 
         disabled={!stripe || processing}
-        className="w-full bg-blue-600 text-white py-5 font-bold uppercase tracking-widest text-lg hover:bg-blue-700 transition-colors disabled:opacity-50 flex items-center justify-center gap-3"
+        className="w-full bg-violet-600 text-white py-5 font-bold uppercase tracking-widest text-lg hover:bg-violet-700 transition-colors disabled:opacity-50 flex items-center justify-center gap-3"
       >
         <CreditCard size={24} />
         {processing ? "Traitement..." : `Payer ${event.price} €`}
@@ -171,7 +171,7 @@ const Booking = () => {
           
           <div className="lg:w-1/2 p-10 lg:p-16 flex flex-col">
             <div className="mb-10">
-              <span className="bg-blue-50 text-blue-600 text-[10px] font-bold px-3 py-1 uppercase tracking-widest inline-block mb-4">
+              <span className="bg-violet-50 text-violet-600 text-[10px] font-bold px-3 py-1 uppercase tracking-widest inline-block mb-4">
                 {event.type}
               </span>
               <h2 className="text-4xl lg:text-5xl font-title font-bold uppercase tracking-tight mb-6 leading-tight">
@@ -184,25 +184,25 @@ const Booking = () => {
             
             <div className="space-y-4 mb-10 border-y border-gray-100 py-8">
               <div className="flex items-center gap-4 text-gray-600 font-semibold text-sm">
-                <div className="w-10 h-10 bg-gray-50 flex items-center justify-center text-blue-500">
+                <div className="w-10 h-10 bg-gray-50 flex items-center justify-center text-violet-500">
                   <Calendar size={20} />
                 </div>
                 <span>{event.start_time ? new Date(event.start_time).toLocaleString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : "12 Février 2026 à 20:00"}</span>
               </div>
               <div className="flex items-center gap-4 text-gray-600 font-semibold text-sm">
-                <div className="w-10 h-10 bg-gray-50 flex items-center justify-center text-blue-500">
+                <div className="w-10 h-10 bg-gray-50 flex items-center justify-center text-violet-500">
                   <MapPin size={20} />
                 </div>
                 <span>{event.arena_name || "Stade de France, Paris"}</span>
               </div>
               <div className="flex items-center gap-4 text-gray-600 font-semibold text-sm">
-                <div className="w-10 h-10 bg-gray-50 flex items-center justify-center text-blue-500">
+                <div className="w-10 h-10 bg-gray-50 flex items-center justify-center text-violet-500">
                   <Ticket size={20} />
                 </div>
                 <span>Billet standard - Placement libre</span>
               </div>
               <div className="flex items-center gap-4 text-gray-600 font-semibold text-sm">
-                <div className="w-10 h-10 bg-gray-50 flex items-center justify-center text-blue-500">
+                <div className="w-10 h-10 bg-gray-50 flex items-center justify-center text-violet-500">
                   <CreditCard size={20} />
                 </div>
                 <span>Prix : {event.price ? `${event.price} €` : "Gratuit"}</span>
@@ -212,7 +212,7 @@ const Booking = () => {
             {bookingStatus && (
               <div className={`mb-8 p-4 flex items-start space-x-3 text-sm font-bold uppercase tracking-wide border ${
                 bookingStatus.type === 'success' ? 'bg-green-50 border-green-100 text-green-700' : 
-                bookingStatus.type === 'error' ? 'bg-red-50 border-red-100 text-red-700' : 'bg-blue-50 border-blue-100 text-blue-700'
+                bookingStatus.type === 'error' ? 'bg-red-50 border-red-100 text-red-700' : 'bg-violet-50 border-violet-100 text-violet-700'
               }`}>
                 {bookingStatus.type === 'success' ? <CheckCircle size={20} /> : <AlertCircle size={20} />}
                 <p>{bookingStatus.message}</p>

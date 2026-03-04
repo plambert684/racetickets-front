@@ -23,7 +23,7 @@ const Home = () => {
   }, []);
 
   return (
-      <div>
+      <div className="-mt-[104px]">
         {/* Hero Section */}
         <div className="relative h-[600px] flex items-center justify-center text-white text-center overflow-hidden">
           {/* Background Overlay */}
@@ -45,7 +45,7 @@ const Home = () => {
           {/* Search Bar */}
           <div className="bg-white text-gray-900 p-2 flex flex-col md:flex-row shadow-2xl">
             <div className="flex-1 px-6 py-4 border-b md:border-b-0 md:border-r border-gray-100 flex items-center gap-4 text-left">
-              <MapPin size={24} className="text-blue-500" />
+              <MapPin size={24} className="text-violet-500" />
               <div>
                 <p className="text-[10px] font-bold uppercase text-gray-400">Lieu</p>
                 <input type="text" placeholder="Ville ou code postal" className="focus:outline-none w-full font-medium" />
@@ -53,7 +53,7 @@ const Home = () => {
             </div>
             
             <div className="flex-1 px-6 py-4 border-b md:border-b-0 md:border-r border-gray-100 flex items-center gap-4 text-left">
-              <Calendar size={24} className="text-blue-500" />
+              <Calendar size={24} className="text-violet-500" />
               <div>
                 <p className="text-[10px] font-bold uppercase text-gray-400">Date</p>
                 <input type="text" placeholder="Toutes les dates" className="focus:outline-none w-full font-medium" />
@@ -61,7 +61,7 @@ const Home = () => {
             </div>
             
             <div className="flex-1 px-6 py-4 flex items-center gap-4 text-left">
-              <Search size={24} className="text-blue-500" />
+              <Search size={24} className="text-violet-500" />
               <div>
                 <p className="text-[10px] font-bold uppercase text-gray-400">Événement</p>
                 <input type="text" placeholder="Tous les événements" className="focus:outline-none w-full font-medium" />
@@ -92,7 +92,7 @@ const Home = () => {
                 <div key={event.id} className="bg-white border border-gray-200 p-8 flex flex-col justify-between hover:shadow-lg transition-shadow">
                   <div>
                     <div className="flex justify-between items-start mb-4">
-                      <div className="bg-blue-50 text-blue-600 text-[10px] font-bold px-2 py-1 uppercase tracking-wider">
+                      <div className="bg-violet-50 text-violet-600 text-[10px] font-bold px-2 py-1 uppercase tracking-wider">
                         {event.type || 'LOREM , LOREM-IPSUM'}
                       </div>
                     </div>

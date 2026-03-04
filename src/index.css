@@ -7,7 +7,19 @@
   --font-title: "Poppins", sans-serif;
 
   --color-primary: #000000;
-  --color-accent: #3b82f6;
+  --color-accent: #757BC8;
+
+  --color-violet-50: #F1F2F9;
+  --color-violet-100: #E3E5F3;
+  --color-violet-200: #C7CCE7;
+  --color-violet-300: #ABB2DB;
+  --color-violet-400: #8E99CF;
+  --color-violet-500: #757BC8;
+  --color-violet-600: #5D62A0;
+  --color-violet-700: #464A78;
+  --color-violet-800: #2E3150;
+  --color-violet-900: #171828;
+  --color-violet-950: #0B0C14;
 
   --radius-none: 0;
   --radius-sm: 0;
@@ -24,7 +36,7 @@
 }
 
 @utility input-field {
-  @apply border border-gray-200 p-2 w-full focus:outline-none focus:ring-1 focus:ring-blue-500 bg-white;
+  @apply border border-gray-200 p-2 w-full focus:outline-none focus:ring-1 focus:ring-violet-500 bg-white;
 }
 
 body {

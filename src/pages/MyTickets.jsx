@@ -44,7 +44,7 @@ const MyTickets = () => {
                 {/* Left part - Event info */}
                 <div className="flex-1 p-8">
                   <div className="flex justify-between items-start mb-4">
-                    <div className="bg-blue-50 text-blue-600 text-[10px] font-bold px-2 py-1 uppercase tracking-wider">
+                    <div className="bg-violet-50 text-violet-600 text-[10px] font-bold px-2 py-1 uppercase tracking-wider">
                       {ticket.type}
                     </div>
                     <div className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">
@@ -57,24 +57,23 @@ const MyTickets = () => {
                   
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="flex items-center gap-3 text-sm text-gray-600">
-                      <Calendar size={16} className="text-blue-500" />
+                      <Calendar size={16} className="text-violet-500" />
                       <span>{ticket.start_time ? new Date(ticket.start_time).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : 'Date à venir'}</span>
                     </div>
                     <div className="flex items-center gap-3 text-sm text-gray-600">
-                      <MapPin size={16} className="text-blue-500" />
+                      <MapPin size={16} className="text-violet-500" />
                       <span>{ticket.arena_name || 'Lieu à confirmer'}</span>
                     </div>
                     <div className="flex items-center gap-3 text-sm text-gray-600">
-                      <Ticket size={16} className="text-blue-500" />
+                      <Ticket size={16} className="text-violet-500" />
                       <span>Siège : {ticket.seat_id}</span>
                     </div>
                   </div>
                 </div>
 
-                {/* Right part - QR Code placeholder & Actions */}
                 <div className="bg-gray-50 p-8 flex flex-col items-center justify-center border-t md:border-t-0 md:border-l border-gray-100 min-w-[200px]">
                   <div className="w-24 h-24 bg-white border border-gray-200 mb-4 flex items-center justify-center">
-                    {/* Simulation d'un QR Code */}
+
                     <div className="grid grid-cols-4 gap-1 p-2">
                       {[...Array(16)].map((_, i) => (
                         <div key={i} className={`w-3 h-3 ${Math.random() > 0.5 ? 'bg-black' : 'bg-gray-100'}`} />
