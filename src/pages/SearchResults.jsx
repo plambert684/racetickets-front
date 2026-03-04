@@ -27,7 +27,6 @@ const SearchResults = () => {
 
   return (
     <div>
-      {/* Header with Search Bar */}
       <div className="bg-white border-b border-gray-100 py-10">
         <div className="container mx-auto px-4">
           <div className="bg-white border border-gray-200 p-2 flex flex-col md:flex-row shadow-sm max-w-5xl mx-auto">
@@ -62,7 +61,6 @@ const SearchResults = () => {
         </div>
       </div>
 
-      {/* Results Content */}
       <section className="py-16 min-h-screen">
         <div className="container mx-auto px-4">
           <div className="mb-12">

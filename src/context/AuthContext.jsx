@@ -25,17 +25,17 @@ export const AuthProvider = ({ children }) => {
       const token = localStorage.getItem('token');
       
       if (savedUser && token) {
-        // Définir l'utilisateur local d'abord pour un chargement rapide
+
         setUser(JSON.parse(savedUser));
         
         try {
-          // Rafraîchir les infos depuis le serveur pour avoir le rôle à jour
+
           const freshUser = await authService.getMe();
           setUser(freshUser);
           localStorage.setItem('user', JSON.stringify(freshUser));
         } catch (err) {
           console.error("Erreur lors du rafraîchissement de l'utilisateur:", err);
-          // Si le token est invalide, on déconnecte
+
           if (err.status === 401 || err.status === 403) {
             logout();
           }

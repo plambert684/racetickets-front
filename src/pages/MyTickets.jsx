@@ -41,7 +41,7 @@ const MyTickets = () => {
           <div className="space-y-6">
             {tickets.map((ticket) => (
               <div key={ticket.id} className="bg-white border border-gray-200 flex flex-col md:flex-row overflow-hidden hover:shadow-md transition-shadow">
-                {/* Left part - Event info */}
+
                 <div className="flex-1 p-8">
                   <div className="flex justify-between items-start mb-4">
                     <div className="bg-violet-50 text-violet-600 text-[10px] font-bold px-2 py-1 uppercase tracking-wider">
@@ -80,10 +80,6 @@ const MyTickets = () => {
                       ))}
                     </div>
                   </div>
-                  <button className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-gray-500 hover:text-black transition-colors">
-                    <Download size={14} />
-                    Télécharger PDF
-                  </button>
                 </div>
               </div>
             ))}

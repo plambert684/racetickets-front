@@ -5,7 +5,7 @@ import { io } from 'socket.io-client';
 import { loadStripe } from '@stripe/stripe-js';
 import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import { useAuth } from '../context/AuthContext.jsx';
-import { Calendar, MapPin, Ticket, AlertCircle, CheckCircle, CreditCard } from 'lucide-react';
+import {Calendar, MapPin, Ticket, AlertCircle, CheckCircle, CreditCard, User} from 'lucide-react';
 
 const CheckoutForm = ({ event, onBookingSuccess }) => {
   const stripe = useStripe();
@@ -207,6 +207,15 @@ const Booking = () => {
                 </div>
                 <span>Prix : {event.price ? `${event.price} €` : "Gratuit"}</span>
               </div>
+
+              {event.max_capacity && (
+                  <div className="flex items-center gap-4 text-gray-600 font-semibold text-sm">
+                    <div className="w-10 h-10 bg-gray-50 flex items-center justify-center text-violet-500">
+                      <User size={20}/>
+                    </div>
+                    <span>{event.max_capacity} places totale</span>
+                  </div>
+              )}
             </div>
 
             {bookingStatus && (

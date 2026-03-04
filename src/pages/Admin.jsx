@@ -9,6 +9,7 @@ const Admin = () => {
   const [description, setDescription] = useState('');
   const [type, setType] = useState('evenement');
   const [price, setPrice] = useState('');
+  const [maxCapacity, setMaxCapacity] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
 
@@ -31,16 +32,29 @@ const Admin = () => {
     setMessage(null);
     try {
       if (editingId) {
-        await eventService.update(editingId, { title, description, type, price: parseFloat(price) });
+        await eventService.update(editingId, { 
+          title, 
+          description, 
+          type, 
+          price: parseFloat(price), 
+          max_capacity: parseInt(maxCapacity) 
+        });
         setMessage({ type: 'success', text: 'Événement mis à jour avec succès !' });
       } else {
-        await eventService.create({ title, description, type, price: parseFloat(price) });
+        await eventService.create({ 
+          title, 
+          description, 
+          type, 
+          price: parseFloat(price), 
+          max_capacity: parseInt(maxCapacity) 
+        });
         setMessage({ type: 'success', text: 'Événement créé avec succès !' });
       }
       setTitle('');
       setDescription('');
       setType('evenement');
       setPrice('');
+      setMaxCapacity('');
       setEditingId(null);
       fetchEvents();
     } catch (err) {
@@ -56,6 +70,7 @@ const Admin = () => {
     setDescription(event.description || '');
     setType(event.type);
     setPrice(event.price || '');
+    setMaxCapacity(event.max_capacity || '');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -70,6 +85,7 @@ const Admin = () => {
         setDescription('');
         setType('evenement');
         setPrice('');
+        setMaxCapacity('');
       }
     } catch (err) {
       alert("Erreur lors de la suppression");
@@ -82,6 +98,7 @@ const Admin = () => {
     setDescription('');
     setType('evenement');
     setPrice('');
+    setMaxCapacity('');
   };
 
   return (
@@ -143,6 +160,18 @@ const Admin = () => {
                 </div>
 
                 <div className="space-y-1">
+                  <label className="text-[10px] font-bold uppercase text-gray-400 tracking-widest">Capacité maximale</label>
+                  <input 
+                    type="number" 
+                    required 
+                    className="w-full border border-gray-200 p-3 focus:outline-none focus:ring-1 focus:ring-violet-500 bg-gray-50 font-medium text-sm"
+                    placeholder="ex: 100"
+                    value={maxCapacity}
+                    onChange={(e) => setMaxCapacity(e.target.value)}
+                  />
+                </div>
+
+                <div className="space-y-1">
                   <label className="text-[10px] font-bold uppercase text-gray-400 tracking-widest">Description</label>
                   <textarea 
                     rows="4" 
@@ -187,13 +216,14 @@ const Admin = () => {
                     <tr>
                       <th className="px-8 py-4 text-[10px] font-bold uppercase text-gray-400 tracking-widest">Événement</th>
                       <th className="px-8 py-4 text-[10px] font-bold uppercase text-gray-400 tracking-widest">Type</th>
+                      <th className="px-8 py-4 text-[10px] font-bold uppercase text-gray-400 tracking-widest">Capacité</th>
                       <th className="px-8 py-4 text-[10px] font-bold uppercase text-gray-400 tracking-widest text-right">Actions</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100">
                     {events.length === 0 ? (
                       <tr>
-                        <td colSpan="3" className="px-8 py-12 text-center text-gray-500 font-medium">Aucun événement trouvé</td>
+                        <td colSpan="4" className="px-8 py-12 text-center text-gray-500 font-medium">Aucun événement trouvé</td>
                       </tr>
                     ) : (
                       events.map((event) => (
@@ -203,6 +233,9 @@ const Admin = () => {
                           </td>
                           <td className="px-8 py-6">
                             <div className="inline-block bg-violet-50 text-violet-600 text-[10px] font-bold px-2 py-1 uppercase tracking-wider">{event.type}</div>
+                          </td>
+                          <td className="px-8 py-6">
+                            <div className="text-sm text-gray-600 font-medium">{event.max_capacity} places</div>
                           </td>
                           <td className="px-8 py-6 text-right">
                             <div className="flex justify-end gap-2">

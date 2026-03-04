@@ -43,7 +43,7 @@ const Register = () => {
       };
       
       await authService.register(userData);
-      // Après inscription réussie, on redirige vers le login
+
       navigate('/login', { state: { message: "Inscription réussie ! Veuillez vous connecter." } });
     } catch (err) {
       setError(err.message || "Erreur lors de l'inscription.");
