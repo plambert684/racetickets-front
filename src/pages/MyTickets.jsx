@@ -3,6 +3,7 @@ import { bookingService } from '../services/api.js';
 import { Ticket, Calendar, MapPin, Download } from 'lucide-react';
 
 const MyTickets = () => {
+
   const [tickets, setTickets] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -66,7 +67,7 @@ const MyTickets = () => {
                     </div>
                     <div className="flex items-center gap-3 text-sm text-gray-600">
                       <Ticket size={16} className="text-violet-500" />
-                      <span>Siège : {ticket.seat_id}</span>
+                      <span>Siège : {ticket.seat_number || 'Non assigné'}</span>
                     </div>
                   </div>
                 </div>

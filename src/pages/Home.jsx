@@ -12,7 +12,7 @@ const Home = () => {
     const fetchEvents = async () => {
       try {
         const data = await eventService.getAll();
-        setEvents(data.slice(0, 3)); // Limiter aux 3 premiers pour "Populaires"
+        setEvents(data.slice(0, 3));
       } catch (err) {
         setError("Impossible de charger les événements.");
       } finally {

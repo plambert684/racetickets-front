@@ -74,6 +74,25 @@ export const eventService = {
   },
 };
 
+export const arenaService = {
+  getAll: async () => {
+    try {
+      const response = await api.get('/arenas');
+      return response.data;
+    } catch (error) {
+      throw error.response?.data || error.message;
+    }
+  },
+  getSeats: async (arenaId) => {
+    try {
+      const response = await api.get(`/arenas/${arenaId}/seats`);
+      return response.data;
+    } catch (error) {
+      throw error.response?.data || error.message;
+    }
+  },
+};
+
 export const bookingService = {
   book: async (bookingData) => {
     try {

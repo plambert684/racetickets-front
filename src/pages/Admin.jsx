@@ -1,20 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import { eventService } from '../services/api.js';
+import { eventService, arenaService } from '../services/api.js';
 
 const Admin = () => {
 
   const [events, setEvents] = useState([]);
+  const [arenas, setArenas] = useState([]);
   const [editingId, setEditingId] = useState(null);
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [type, setType] = useState('evenement');
   const [price, setPrice] = useState('');
   const [maxCapacity, setMaxCapacity] = useState('');
+  const [arenaId, setArenaId] = useState('');
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
 
   useEffect(() => {
     fetchEvents();
+    fetchArenas();
   }, []);
 
   const fetchEvents = async () => {
@@ -26,36 +29,37 @@ const Admin = () => {
     }
   };
 
+  const fetchArenas = async () => {
+    try {
+      const data = await arenaService.getAll();
+      setArenas(data);
+    } catch (err) {
+      console.error("Erreur lors de la récupération des arènes", err);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setMessage(null);
     try {
+      const eventData = { 
+        title, 
+        description, 
+        type, 
+        price: parseFloat(price), 
+        max_capacity: maxCapacity ? parseInt(maxCapacity) : undefined,
+        arena_id: arenaId ? parseInt(arenaId) : null
+      };
+
       if (editingId) {
-        await eventService.update(editingId, { 
-          title, 
-          description, 
-          type, 
-          price: parseFloat(price), 
-          max_capacity: parseInt(maxCapacity) 
-        });
+        await eventService.update(editingId, eventData);
         setMessage({ type: 'success', text: 'Événement mis à jour avec succès !' });
       } else {
-        await eventService.create({ 
-          title, 
-          description, 
-          type, 
-          price: parseFloat(price), 
-          max_capacity: parseInt(maxCapacity) 
-        });
+        await eventService.create(eventData);
         setMessage({ type: 'success', text: 'Événement créé avec succès !' });
       }
-      setTitle('');
-      setDescription('');
-      setType('evenement');
-      setPrice('');
-      setMaxCapacity('');
-      setEditingId(null);
+      resetForm();
       fetchEvents();
     } catch (err) {
       setMessage({ type: 'error', text: err.message || 'Erreur lors de l\'opération.' });
@@ -71,6 +75,7 @@ const Admin = () => {
     setType(event.type);
     setPrice(event.price || '');
     setMaxCapacity(event.max_capacity || '');
+    setArenaId(event.arena_id || '');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -80,25 +85,25 @@ const Admin = () => {
       await eventService.delete(id);
       fetchEvents();
       if (editingId === id) {
-        setEditingId(null);
-        setTitle('');
-        setDescription('');
-        setType('evenement');
-        setPrice('');
-        setMaxCapacity('');
+        resetForm();
       }
     } catch (err) {
       alert("Erreur lors de la suppression");
     }
   };
 
-  const cancelEdit = () => {
+  const resetForm = () => {
     setEditingId(null);
     setTitle('');
     setDescription('');
     setType('evenement');
     setPrice('');
     setMaxCapacity('');
+    setArenaId('');
+  };
+
+  const cancelEdit = () => {
+    resetForm();
   };
 
   return (
@@ -143,6 +148,20 @@ const Admin = () => {
                     <option value="concert">Concert</option>
                     <option value="evenement">Événement</option>
                     <option value="atelier">Atelier</option>
+                  </select>
+                </div>
+
+                <div className="space-y-1">
+                  <label className="text-[10px] font-bold uppercase text-gray-400 tracking-widest">Arène</label>
+                  <select 
+                    className="w-full border border-gray-200 p-3 focus:outline-none focus:ring-1 focus:ring-violet-500 bg-gray-50 font-medium text-sm appearance-none"
+                    value={arenaId}
+                    onChange={(e) => setArenaId(e.target.value)}
+                  >
+                    <option value="">Sélectionner une arène (optionnel)</option>
+                    {arenas.map(arena => (
+                      <option key={arena.id} value={arena.id}>{arena.name}</option>
+                    ))}
                   </select>
                 </div>
 
